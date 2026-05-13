@@ -1,6 +1,8 @@
+(Always in the making) All the resources I found useful during my tech journey, and the ones I created
+
 # [web-development-resources](https://github.com/everythingshyam/web-development-resources)
 
-All the resources I utilized learning web development, including the notes and resources I made myself.
+All the resources I utilized for learning web development, including the notes and resources I made myself.
 
 ## List of Content
 
