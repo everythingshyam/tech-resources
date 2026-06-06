@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Assistant Setup</title>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Personalized Morning Briefs using Google Gemini</h1>
+
+        <p>This guide will walk you through building a highly personalized, zero-hallucination morning briefing system.
+            By combining a generalized Master Prompt with a personal context document, your AI assistant will read your
+            schedule,
+            triage your emails, fetch hyper-local news, and tie it all back to your personal life goals in a 5-minute
+            daily text/audio brief.</p>
+
+        <p>
+            To be honest upfront, this setup is not without its challenges and downsides. Due to the current constraints
+            we have in the emerging Gen AI technology, and the improving-but-still-present limitations in AI & Personal
+            Ecosystems
+            integration, the process has to be as manual as it is right now. During preparation of this process, I
+            experimented with multiple approaches and combinations, including pre-baking
+            the Master Prompt in Gemini and only using keyword-based triggers, using Google Gemini Gems, and creating
+            Gemini Notebook chats, but each had its own set of challenges and limitations.</p>
+        <p>
+            Eventually, I settled on this
+            extensive but highly effective method outlined here. As I keep using this briefing system and as the
+            technology improves, I will continue to update this guide to make this system even more automated and
+            efficient. </p>
+        <p>
+            Ideally, you would need 15-20 minutes to do the one-time setup and just 30-40 seconds of manual hassle &
+            wait time daily before
+            getting your morning briefing. And with understanding of how Gen AI systems work, if you set up this system
+            in the right manner,
+            these manual efforts will be totaly worth it!</p>
+
+        <div class="summary-box">
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>
+                    <strong>Google Account & App:</strong>
+                    The Gemini mobile app installed on your smartphone.
+                </li>
+                <li>
+                    <strong>Google AI Pro Subscription:</strong>
+                    Highly recommended. This setup relies on the "Advanced" model and "Extended Thinking" for complex
+                    file parsing and multi-app synthesis.
+                    <em>(Without Pro, you can still execute this, but expect shallower email analysis, occasional
+                        ignored instructions, and less creative synthesis of your life goals).</em>
+                </li>
+                <li>
+                    <strong>A Notes App:</strong>
+                    WhatsApp (Self Chat), Google Keep, or any easily accessible mobile notes app to store your daily
+                    trigger prompt.
+                </li>
+            </ul>
+        </div>
+
+        <h2>Step-by-Step Implementation</h2>
+
+        <div class="step-block">
+            <h3>Step 1: Gemini System Configuration</h3>
+            <p>To prevent Gemini from getting confused due to continously improving briefing prompts over time, we must
+                instruct it specifically to NOT update the Gemini's personalization memory when interacting with it for
+                the morning briefing.</p>
+            <p>
+                Open Gemini (Web or App) > Settings >
+                <strong>Custom Instructions</strong>
+                (or "Saved Info") and paste the following:
+            </p>
+            <pre><code>For 'Morning Briefing', whenever a detailed prompt is provided asking you to provide the comprehensive morning briefings of the day, follow the instructions precisely and DO NOT update the memory to save 'Morning Briefing' preferences, as I want it to run as a fresh prompt everyday and avoid any mixup if I update the prompts over time.</code></pre>
+        </div>
+
+        <div class="step-block">
+            <h3>Step 2: Choose Your Assistant's Voice</h3>
+            <p>For the best "Read Aloud" experience, configure Gemini's native voice engine.</p>
+            <p>
+                Go to Gemini App > Settings >
+                <strong>Gemini's voice</strong>
+                . Select a voice that sounds natural to you. (Personal recommendation: Use the
+                <strong>"Dipper"</strong>
+                voice option for a warm, articulate tone).
+            </p>
+        </div>
+
+        <div class="step-block">
+            <h3>Step 3: Enable Ecosystem Extensions</h3>
+            <p>
+                Google Gemini needs permission to read your data. Go to Gemini Settings >
+                <strong>Personal Intelligence</strong>
+                (under "Connected Apps") and ensure all Workspace toggles (Gmail, Drive, Docs, Calendar, Tasks, Keep)
+                are turned
+                <strong>ON</strong>
+                .
+            </p>
+        </div>
+
+        <div class="step-block">
+            <h3>Step 4: Create the 'Personal Context' Document</h3>
+            <p>
+                Open Google Docs within the same Google account and create a new document exactly titled:
+                <code>ai_personal_context</code>
+                .
+            </p>
+            <p>This document is your Personal Assistant's "memory". Append and update your life goals, current location
+                or other things as they change, in this document. Copy
+                and paste the outline below into your document and fill it with your own details:</p>
+            <pre><code>Personal Context: [Your Name]
+
+I. Core Identity & Mission
+Role: [Your Profession/Role]
+Vision: [Your ultimate goal or mission]
+Passion: [Hobbies, secondary pursuits]
+
+II. Life & Work Policies
+Health: [Rules you live by, e.g., "Prioritize 8 hours of sleep"]
+Professional: [Career rules]
+Conduct: [Personal philosophy]
+
+III. Current Metrics & Status
+[List your current habits vs targets here. e.g., Sleep: Target 10 PM, Reality 1 AM]
+
+IV. Logistics & Background
+Current Location: [Your City, State, Country; required for weather updates]
+Work Schedule: [Your working days and hours]
+Key Challenges: [Things you struggle with, e.g., Doomscrolling]
+News Tags: [e.g., #india, #sustainability, #tech-startups, #geopolitics, #economy, #individual-cities-and-states]</code></pre>
+        </div>
+
+        <div class="step-block">
+            <h3>Step 5: Save the Master Prompt</h3>
+            <p>Save the following text into your WhatsApp "Self" chat or a pinned note. Replace "[Your Name phonetic
+                spelling]" with how your name sounds to ensure the text-to-speech reads it correctly. You will be using
+                this prompt
+                every morning for the briefing generation.</p>
+            <pre><code>
+Role & Persona:
+Act as my highly professional, exceptionally articulate, and warm personal assistant. As you might know from 'Personal Intelligence', my name is [Your Name phonetic spelling]. You have access to my 'ai_personal_context' document in my Google Drive. Provide a comprehensive, 5-minute morning briefing.
+
+Core Directives (CRITICAL):
+- Zero Metadata & No Headers: Do not include confirmation text like "Here is your briefing." Do not use section headers. Write the entire response as a seamless, flowing speech script using natural transitional phrases. Use tasteful bolding for scannability. Pacing: Use commas, dashes, and periods frequently to force natural pauses when this script is read aloud.
+- Maintain the Fourth Wall: You are a human-like assistant. Never say "I checked your files," or "According to your Drive." State the information confidently as facts you simply know.
+- Dynamic Fallbacks: If a data source is empty or unavailable, do NOT use a robotic error message. Instead, dynamically acknowledge it in character. (e.g., "Your inbox is perfectly quiet this morning with no critical fires.") If a file or resource is missing/unavailable, seamlessly pivot to other topics, and provide a casual heads-up, in character, at the end of the briefing.
+
+Briefing Sequence & Deep-Dive Logic:
+
+1. Anchor & Weather: Start with a warm greeting. State the current day, date, and time. Extract my "Current Location" from the 'ai_personal_context' document in Drive and provide a detailed weather forecast for that area. Mention how the weather might affect the day.
+
+2. The Day's Architecture: Analyze my schedule from Google Calendar, Tasks, and Keep. Weave them into a narrative of my day. Point out back-to-back crunches, highlight commute times, and explicitly remind me of important deadlines. If the day is empty, encourage deep focused work and quality time with loved ones.
+
+3. Communications Triage: Review Gmail for the last 24 hours. Strictly filter out newsletters, marketing, and ad updates. Focus deeply on VIPs, security alerts, financial statements, and project communications. Provide a 1-sentence context for why the email matters.
+
+4. Curated World View: Extract my "News Tags" from the 'ai_personal_context' document. Structure the news exactly like a curated regional news app based on those tags: prioritize 2-3 stories regarding my specific locations and national development, followed by 1-2 major geopolitical/economic stories. Ignore random international filler and generic crime.
+
+5. Alignment & Sign-off: Consolidate some randomized life priorities & health status from the 'ai_personal_context' document in Drive and the content presented in the current briefing to make a seamless, valuable, and motivational closure to the briefing. Give yourself the freedom to collate these ideas with an open-ended approach so the advice feels surprising and fresh every day. Weave this into a deeply personalized 3-4 sentence closing statement that sets the tone for my day. End with a warm sign-off.
+
+@Calendar @Tasks @Keep @Gmail @Drive</code></pre>
+        </div>
+
+        <div class="step-block">
+            <h3>Step 6: Daily Usage Instructions</h3>
+            <ol>
+                <li>Open your Notes/WhatsApp and copy the Master Prompt.</li>
+                <li>
+                    Open the Gemini App on your phone and start a
+                    <strong>New Chat</strong>
+                    .
+                </li>
+                <li>Ensure the "Advanced/Pro" model is selected, and if available, toggle ON "Extended Thinking".</li>
+                <li>Paste the prompt into the chat box.</li>
+                <li>
+                    <strong>CRITICAL:</strong>
+                    Manually delete the text "@Calendar @Tasks @Keep @Gmail @Drive" at the bottom of the prompt, and
+                    re-type them manually, tapping the pop-up UI chips for each app and verify they got highlighted in
+                    bold text. This forces
+                    the system to access your data and respond with personal context, instead of generic AI responses.
+                </li>
+                <li>Hit send. It will take 15-30 seconds for the AI to "think" and gather the data.</li>
+                <li>Wait for the AI to finish generating the response.</li>
+                <li>
+                    Once the response is generated completely, either go through the brief yourself, or utilize the
+                    <strong>Speaker Icon (Read Aloud)</strong>
+                    at the bottom of the generated response, and listen to your 5 minute morning brief on the go! Please
+                    note that the Gemini's
+                    read aloud feature currently doesn't support screen off or other interruptions in Gemini.
+                </li>
+            </ol>
+        </div>
+
+        <div class="step-block">
+            <h3>Sample Morning Brief Response</h3>
+            <p>Using an imaginary persona of a female executive from Mumbai currently on a business trip in Varanasi,
+                here's a sample of how the Morning Brief might look like (prepared based on one of my personal morning
+                briefs):</p>
+            <pre><code>
+Good morning, Ananya. It is Saturday, June 6th, and the time is currently 7:30 AM. Looking out at the weather here in Varanasi, Uttar Pradesh, it is starting at a pleasant 28°C, but conditions are expected to get quite intense by the afternoon, reaching a high of 41°C. High humidity will make it feel closer to 45°C before scattered thundershowers bring some relief later in the evening. Please make sure to stay hydrated during your presentations today and carry an umbrella if you plan to step out of the convention center.
+
+The architecture of your day is centered heavily around leadership and strategic alignment. Your main block kicks off at 9:30 AM with the Keynote Panel on Renewable Energy and Grid Infrastructure at the Sustainability Summit, which runs until 12:30 PM. This matches perfectly with your open task items to review the final draft of the Q3 carbon neutrality reports and complete your mandatory compliance training updates. If you find a small pocket of downtime between sessions this afternoon, it would be a perfect opportunity to clear your desk workspace and organize your digital files before wrapping up your travel logs. Once the heavy lifting is wrapped up, your schedule transitions into well-deserved leisure with an evening boat ride and cultural walk along the Dashashwamedh Ghat planned for 6:30 PM.
+
+Your communications triage over the last 24 hours reflects a busy corporate runway, but I have filtered out the standard operational noise and newsletters to leave you with only the essential updates. First, the Summit Coordination Team sent an urgent logistics confirmation detailing a room shift for your afternoon panel discussion—it has been moved to the main auditorium to accommodate higher registration numbers. Second, your Chief Sustainability Officer flagged a thread containing the final, unapproved revisions for the APAC Carbon Neutrality Framework; she requested your immediate sign-off on the regional compliance metrics before the noon corporate filing deadline. Finally, your airline processed an automated notification confirming that your return flight to Mumbai has been rescheduled to depart forty-five minutes later than expected tomorrow evening, giving you a bit of a breathing window after the closing ceremonies.
+
+Turning to the world view and your curated interests, regional development and sustainability are taking center stage in India. The Ministry of New and Renewable Energy has announced an aggressive new financial subsidy package aimed at accelerating rooftop solar installations across Tier II and Tier III cities, which is an incredible growth signal for green energy accessibility outside major metros. In regional corporate news, a prominent logistics conglomerate has committed a 120 million dollar investment to establish an eco-friendly multi-modal tech park near Mumbai, positioning Maharashtra as an emerging hub for green supply chains. On the macroeconomic front, India’s bilateral trade discussions with the European Union have progressed significantly this week, aiming to hit a historic 150 billion dollar milestone with an explicit focus on sustainable manufacturing frameworks. Concurrently, dynamic shifts in global supply routes have put an immediate spotlight on domestic industrial self-reliance, driving accelerated strategic clean-energy collaborations between Indian software firms and technology partners in the United States.
+
+As you step into the summit venue this morning, remember your core philosophy of approaching public-facing work with quiet ownership and treating personal development as an engineering laboratory. Try not to let the networking sessions pull you into answering emails late into the night. Let's aim to conclude your professional tasks efficiently today so you can completely unplug by the river tonight and bring your sleep schedule closer to your 10:30 PM target. Deep, restorative rest is your foundation for sustainable leadership. Have an incredibly successful day at the summit and a magical evening by the ghats, Ananya.
+        </code></pre>
+
+        </div>
+
+        <div class="step-block">
+            <h3>Closing Instructions</h3>
+            <ol>
+                <li>As everyone's personal choices and preferences vary, you may need to test & apply minor variations
+                    to the Master Prompt, to fit your own personal needs and preferences.</li>
+                <li>Update the AI Personal Context document and your Google Apps (such as Calendar, Tasks, etc.)
+                    regularly to ensure the morning briefings remain relevant and up-to-date.</li>
+                </li>
+                <li>
+                    <strong>Important:</strong> Providing Gemini access to you Google Apps means that Gemini can access
+                    all of your data present in those apps, including fles on your Drive, photos and videos in Google
+                    Photos, and more. Hence, be cautious while giving access to your Google Apps Data to Gemini. If
+                    you're planning to use Gemini across Google Apps, be cautious while storing highly sensitive
+                    information and files, and regularly review the Privacy and Security settings of your Google account
+                    and Gemini Workspace.
+                </li>
+                <li>Regularly delete your past briefing chats to keep your Gemini workspace clean and tidy.</li>
+            </ol>
+            <div class="signature">
+            <p>Keep learning. Be the change.</p>
+            <p><a href="https://www.everythingshyam.in/" target="_blank">Shyam</a></p>
+            </div>
+        </div>
+
+        <p><a href="../index.html">← Back to Main Menu</a></p>
+    </div>
+</body>
+
+</html>
