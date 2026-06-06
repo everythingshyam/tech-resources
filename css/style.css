@@ -103,6 +103,10 @@ pre {
     margin-bottom: auto;
 }
 
+p.disclaimer{
+    font-size: 0.8rem;
+    color: var(--text-muted);}
+
 /* Mobile Adaptive */
 @media (max-width: 600px) {
 	.container {
