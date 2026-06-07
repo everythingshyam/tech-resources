@@ -11,6 +11,7 @@
 <body>
     <div class="container">
         <h1>Personalized Morning Briefs using Google Gemini</h1>
+        <sub class="last-updated">Last Updated: 7 June 2026</sub>
 
         <p>This guide will walk you through building a highly personalized, zero-hallucination morning briefing system.
             By combining a generalized Master Prompt with a personal context document, your AI assistant will read your
@@ -29,8 +30,8 @@
         <p>
             Eventually, I settled on this
             extensive but highly effective method outlined here. As I keep using this briefing system and as the
-            technology improves, I will continue to update this guide to make this system even more automated and
-            efficient. </p>
+            technology improves and expands, I will continue to update this guide to make this system even more automated and
+            efficient. Talking of automation, Google has announced <a href="https://gemini.google/overview/agent/spark/" target="_blank">Gemini Spark</a>, a automation tool capable of running in the background, which is a perfect fit for this job! But as per the current information on their website, it will be made available to Google AI ultra subscribers and select businesses first. Hence, there's still a long way to go for this highly useful automation to reach the masses.</p>
         <p>
             Ideally, you would need 15-20 minutes to do the one-time setup and just 30-40 seconds of manual hassle &
             wait time daily before
@@ -49,8 +50,7 @@
                     <strong>Google AI Pro Subscription:</strong>
                     Highly recommended. This setup relies on the "Advanced" model and "Extended Thinking" for complex
                     file parsing and multi-app synthesis.
-                    <em>(Without Pro, you can still execute this, but expect shallower email analysis, occasional
-                        ignored instructions, and less creative synthesis of your life goals).</em>
+                    <em><strong>Note for Free Tier Users:</strong> You can completely implement and run this morning briefing framework using a standard, free Google account (tried it myself)! The high-end models and extended thinking features required to parse this multi-app script are usually available without a paid subscription, though they may come with lower usage limits. For more details on Gemini tiers and pricing, please visit <a href="https://gemini.google/in/subscriptions/?hl=en-IN" target="_blank">Google AI Subscriptions Page</a>.</em>
                 </li>
                 <li>
                     <strong>A Notes App:</strong>
@@ -195,8 +195,11 @@ Briefing Sequence & Deep-Dive Logic:
             <h3>Sample Morning Brief Response</h3>
             <p>Using an imaginary persona of a female executive from Mumbai currently on a business trip in Varanasi,
                 here's a sample of how the Morning Brief might look like (prepared based on one of my personal morning
-                briefs):</p>
-            <pre><code>
+                briefs). I have also added a button below to try the read aloud experience yourself. Just keep in mind that the voice options in Gemini are much more natural than the default browser voice you'll now hear.</p>
+            <button id="tts-button" onclick="toggleReadAloud()">
+                <span id="tts-icon">🔊</span> <span id="tts-text">Listen to Briefing</span>
+            </button>
+            <pre><code id="sample-response">
 Good morning, Ananya. It is Saturday, June 6th, and the time is currently 7:30 AM. Looking out at the weather here in Varanasi, Uttar Pradesh, it is starting at a pleasant 28°C, but conditions are expected to get quite intense by the afternoon, reaching a high of 41°C. High humidity will make it feel closer to 45°C before scattered thundershowers bring some relief later in the evening. Please make sure to stay hydrated during your presentations today and carry an umbrella if you plan to step out of the convention center.
 
 The architecture of your day is centered heavily around leadership and strategic alignment. Your main block kicks off at 9:30 AM with the Keynote Panel on Renewable Energy and Grid Infrastructure at the Sustainability Summit, which runs until 12:30 PM. This matches perfectly with your open task items to review the final draft of the Q3 carbon neutrality reports and complete your mandatory compliance training updates. If you find a small pocket of downtime between sessions this afternoon, it would be a perfect opportunity to clear your desk workspace and organize your digital files before wrapping up your travel logs. Once the heavy lifting is wrapped up, your schedule transitions into well-deserved leisure with an evening boat ride and cultural walk along the Dashashwamedh Ghat planned for 6:30 PM.
@@ -229,14 +232,18 @@ As you step into the summit venue this morning, remember your core philosophy of
                 <li>Regularly delete your past briefing chats to keep your Gemini workspace clean and tidy.</li>
             </ol>
             <div class="signature">
-            <p>Keep learning. Be the change.</p>
-            <p><a href="https://www.everythingshyam.in/" target="_blank">Shyam</a></p>
+                <p>Keep learning. Be the change.</p>
+                <p><a href="https://www.everythingshyam.in/" target="_blank">Shyam</a></p>
             </div>
         </div>
 
         <p><a href="../index.html">← Back to Main Menu</a></p>
-        <p class="disclaimer">Disclaimer: This guide is for informational purposes only and should not be considered as a substitute for professional advice. AI systems may produce inaccurate or incomplete results, and should not be relied upon for critical decisions or actions.</p>
+        <hr>
+        <p class="disclaimer">Disclaimer: This guide is for informational purposes only and should not be considered as
+            a substitute for professional advice. AI systems may produce inaccurate or incomplete results, and should
+            not be relied upon for critical decisions or actions.</p>
     </div>
+    <script src="../script/script.js"></script>
 </body>
 
 </html>
